@@ -27,6 +27,7 @@ fn main() -> Result<(), std::io::Error> {
         let curr_num_int: i32 = curr_num.parse().unwrap();
 
         sum += curr_num_int;
+        println!("{}", curr_num_int);
 
         line.clear();
         num_string.clear();
