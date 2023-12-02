@@ -2,4 +2,4 @@ chall-01/c01-1/src/input.txt
 debug/
 target/
 Cargo.lock
-.DS_Store/
+.DS_Store
