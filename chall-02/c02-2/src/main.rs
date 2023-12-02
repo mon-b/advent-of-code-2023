@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::{BufRead, BufReader};
 
 fn main() -> Result<(), std::io::Error> {
-    // headsup this code is so cursed i apologize in advance
+    
     let file: File = File::open("src/input.txt")?;
     let mut reader = BufReader::new(file);
 
@@ -16,9 +16,6 @@ fn main() -> Result<(), std::io::Error> {
             break;
         }
 
-        let max_red: i32 = 12;
-        let max_green: i32 = 13;
-        let max_blue: i32 = 14;
 
         let separated: std::str::Split<'_, &str> = line.split(":");
         let game_info: Vec<&str> = separated.collect::<Vec<&str>>();
@@ -61,15 +58,12 @@ fn main() -> Result<(), std::io::Error> {
             }
         }
 
-        let mut truth_values: Vec<bool> = Vec::new(); // basically an array that contains true if any value exceeds the max balls
-        truth_values.push(_red.iter().any(|&x| x > max_red));
-        truth_values.push(_green.iter().any(|&x| x > max_green));
-        truth_values.push(_blue.iter().any(|&x| x > max_blue));
-
-        if !truth_values.iter().any(|&x: &bool| x) 
-        {
-            sum += _game_id
-        }
+        
+        let max_red = _red.iter().cloned().max().unwrap_or_default();
+        let max_green = _green.iter().cloned().max().unwrap_or_default();
+        let max_blue = _blue.iter().cloned().max().unwrap_or_default();
+        let multi: i32 = max_blue * max_green * max_red;
+        sum += multi;
 
         line.clear();
     }
