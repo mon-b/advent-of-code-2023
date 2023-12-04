@@ -1,5 +1,4 @@
 <p align="center">   
-<img src="https://i0.wp.com/ccsretailsystems.com/wp-content/uploads/2017/11/Christmas-Dividers-PNG-Photo.png?ssl=1" alt="Christmas Lights"> 
 <font size="+2">Advent of Code 2023</font>
 <br><br>
 ✅ Day 1 ⋆ ⁺ ✅ Day 2 ⁺ ⋆ ❌ Day 3 ⋆ ⁺ ✅ Day 4 ⁺ ⋆ 🔒 Day 5 <br>
@@ -11,10 +10,5 @@
 </p>
 
 <p align="center">
-<img src="https://i0.wp.com/ccsretailsystems.com/wp-content/uploads/2017/11/Christmas-Dividers-PNG-Photo.png?ssl=1" alt="Christmas Lights"> 
-<br>
 
 </p>
-
-
-<font size="-20">I am way too bored</font>
