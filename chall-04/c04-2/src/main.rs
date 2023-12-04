@@ -1,19 +1,36 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
+struct Card {
+    card_id: i32,
+    copies: i32,
+    winning_entries: i32
+}
+
+impl Card {
+    fn new(card_id: i32, winning_entries: i32) -> Self {
+        // all cards start with 1 copy
+        Card {
+            card_id,
+            copies: 1,
+            winning_entries,
+        }
+    }
+}
+
 fn main() -> Result<(), std::io::Error> {
     let file = File::open("src/input.txt")?;
     let mut reader = BufReader::new(file);
 
     let mut line = String::new();
-    let mut _points = 0;
+    let mut cards: Vec<Card> = <Vec<Card>>::new();
+    let mut _id_count = 1;
 
     loop {
         let bytes_read = reader.read_line(&mut line)?;
         if bytes_read == 0 {
             break;
         }
-
 
         let sep = line.trim().split(":");
         let card_nums = sep.collect::<Vec<&str>>()[1];
@@ -38,13 +55,22 @@ fn main() -> Result<(), std::io::Error> {
             .filter(|&x| winning_numbers.contains(x))
             .count();
 
-        if total_matches > 0 {
-            // not having this was causing overflow because when 0 matches exponent would be -1
-            _points += i32::pow(2, total_matches as u32 - 1);
-        }
+        let mut card_instance = Card::new(_id_count, total_matches as i32);
+        cards.push(card_instance);
 
         line.clear();
+        _id_count += 1
     }
-    println!("{}", _points);
+    for i in 0..cards.len() {
+        let multiplier = cards[i].copies;
+        for x in 1..(cards[i].winning_entries+1) {
+            cards[x as usize + i].copies += 1 * multiplier;
+        }
+    }
+    let mut card_count = 0;
+    for card in &cards {
+        card_count += card.copies
+    }
+    println!("{}", card_count);
     Ok(())
 }
