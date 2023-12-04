@@ -71,6 +71,6 @@ fn main() -> Result<(), std::io::Error> {
     for card in &cards {
         card_count += card.copies
     }
-    println!("{}", card_count);
+    println!("Total of cards: {}", card_count);
     Ok(())
 }
